@@ -1,8 +1,7 @@
 import React from 'react'
-import { Container } from '@material-ui/core'
-import { Card } from '@material-ui/core'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import NasaCard from './NasaCard'
 
 export default function Body() {
   const api_key = 'BdgQlWf6ucvJktrCP2SxWEKf1fnAUcT4GXx4tIFs'
@@ -16,11 +15,24 @@ export default function Body() {
         },
       })
       .then((r) => setObj(r.data))
-  })
+
+      .catch((err) => console.log(err))
+  }, [])
+
+  console.log(obj)
 
   return (
-    <Container>
-      <Card>{JSON.stringify(obj)}</Card>
-    </Container>
+    <React.Fragment>
+      {obj == null ? (
+        <h1>Loading</h1>
+      ) : (
+        <NasaCard
+          date={obj.date}
+          explanation={obj.explanation}
+          url={obj.url}
+          title={obj.title}
+        />
+      )}
+    </React.Fragment>
   )
 }
