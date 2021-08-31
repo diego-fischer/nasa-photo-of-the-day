@@ -7,25 +7,20 @@ import {
 } from '@material-ui/core'
 import React from 'react'
 
-export default function NasaCard(props) {
-  // console.log('PROPS', props)
-  // console.log('DATE', props.date)
+export default function NasaCards(props) {
   return (
     <Grid>
       <Container>
-        <Card>
+        <Typography color='primary' variant='h1'>
+          Welcome to Nasa!
+        </Typography>
+        <Card raised='true'>
           <CardContent>
-            <Typography color='primary' variant='h1'>
-              Welcome to Nasa!
-            </Typography>
-            <Typography color='primary' variant='h2'>
+            <Typography color='secondary' variant='h4'>
               {props.title}
             </Typography>
             <Typography color='primary' variant='subtitle1'>
               Date: {props.date}
-            </Typography>
-            <Typography color='primary' variant='subtitle2'>
-              url: {props.url}
             </Typography>
             <Typography color='primary' variant='body1'>
               {props.explanation}

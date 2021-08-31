@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import NasaCard from './NasaCard'
+import NasaCards from './NasaCards'
+import { Typography } from '@material-ui/core'
+import './custom-styling.css'
 
 export default function Body() {
   const api_key = 'BdgQlWf6ucvJktrCP2SxWEKf1fnAUcT4GXx4tIFs'
@@ -24,9 +26,11 @@ export default function Body() {
   return (
     <React.Fragment>
       {obj == null ? (
-        <h1>Loading</h1>
+        <Typography color='primary' variant='h4'>
+          Please wait while we load awesome stuff...
+        </Typography>
       ) : (
-        <NasaCard
+        <NasaCards
           date={obj.date}
           explanation={obj.explanation}
           url={obj.url}
