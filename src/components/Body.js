@@ -2,41 +2,50 @@ import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import NasaCards from './NasaCards'
-import { Typography } from '@material-ui/core'
-import './custom-styling.css'
+import { Typography, Box } from '@material-ui/core'
+import StartDatePicker from './StartDatePicker'
+import EndDatePicker from './EndDatePicker'
 
 export default function Body() {
   const api_key = 'BdgQlWf6ucvJktrCP2SxWEKf1fnAUcT4GXx4tIFs'
   const [obj, setObj] = useState(null)
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null)
 
-  useEffect(() => {
-    axios
-      .get('https://api.nasa.gov/planetary/apod', {
-        params: {
-          api_key,
-        },
-      })
-      .then((r) => setObj(r.data))
+  const handleStartDateChange = (date) => {
+    setStartDate(date)
+  }
 
-      .catch((err) => console.log(err))
-  }, [])
+  const handleEndDateChange = (date) => {
+    setEndDate(date)
+  }
 
-  console.log(obj)
+  console.log('START DATE', startDate)
+  console.log('END DATE', endDate)
 
   return (
     <React.Fragment>
-      {obj == null ? (
-        <Typography color='primary' variant='h4'>
-          Please wait while we load awesome stuff...
+      <Box mt={10}>
+        <Typography variant='h1'>Nasa Observatory</Typography>
+      </Box>
+
+      <Box mt={5}>
+        <Typography variant='subtitle1'>
+          Nasa discloses one awesome photo per day. Please select below the
+          dates interval for which your gallery will be generated.
         </Typography>
-      ) : (
-        <NasaCards
-          date={obj.date}
-          explanation={obj.explanation}
-          url={obj.url}
-          title={obj.title}
+      </Box>
+
+      <Box>
+        <StartDatePicker
+          value={startDate}
+          onChange={(date) => handleStartDateChange(date)}
         />
-      )}
+        <EndDatePicker
+          value={endDate}
+          onChange={(date) => handleEndDateChange(date)}
+        />
+      </Box>
     </React.Fragment>
   )
 }
