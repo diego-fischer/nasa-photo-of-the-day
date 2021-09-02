@@ -14,12 +14,13 @@ export default function StartDatePicker(props) {
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justifyContent='space-around'>
         <KeyboardDatePicker
+          autoOk={true}
           disableToolbar
           variant='inline'
           format='MM/dd/yyyy'
           margin='normal'
           id='date-picker-inline'
-          label='Date picker inline'
+          label='Start Date'
           value={props.value}
           onChange={props.onChange}
           KeyboardButtonProps={{

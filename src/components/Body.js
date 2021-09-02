@@ -2,9 +2,10 @@ import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import NasaCards from './NasaCards'
+import DatePickers from './DatePickers'
+
 import { Typography, Box } from '@material-ui/core'
-import StartDatePicker from './StartDatePicker'
-import EndDatePicker from './EndDatePicker'
+import Grid from '@material-ui/core/Grid'
 
 export default function Body() {
   const api_key = 'BdgQlWf6ucvJktrCP2SxWEKf1fnAUcT4GXx4tIFs'
@@ -20,32 +21,36 @@ export default function Body() {
     setEndDate(date)
   }
 
-  console.log('START DATE', startDate)
-  console.log('END DATE', endDate)
+  useEffect(() => {
+    console.log('START DATE', startDate)
+    console.log('END DATE', endDate)
+  })
 
   return (
-    <React.Fragment>
+    <Grid
+      container
+      spacing={0}
+      direction='column'
+      alignItems='center'
+      justify='center'
+      style={{ minHeight: '100vh' }}
+    >
       <Box mt={10}>
         <Typography variant='h1'>Nasa Observatory</Typography>
       </Box>
 
       <Box mt={5}>
-        <Typography variant='subtitle1'>
+        <Typography align='center' variant='subtitle1'>
           Nasa discloses one awesome photo per day. Please select below the
           dates interval for which your gallery will be generated.
         </Typography>
       </Box>
-
-      <Box>
-        <StartDatePicker
-          value={startDate}
-          onChange={(date) => handleStartDateChange(date)}
-        />
-        <EndDatePicker
-          value={endDate}
-          onChange={(date) => handleEndDateChange(date)}
-        />
-      </Box>
-    </React.Fragment>
+      <DatePickers
+        startDateValue={startDate}
+        startDateOnChange={(date) => handleStartDateChange(date)}
+        endeDateValue={endDate}
+        endDateOnChange={(date) => handleEndDateChange(date)}
+      />
+    </Grid>
   )
 }
