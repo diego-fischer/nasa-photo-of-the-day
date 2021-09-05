@@ -6,6 +6,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers'
+import moment from 'moment'
 
 export default function StartDatePicker(props) {
   // The first commit of Material-UI
@@ -14,10 +15,11 @@ export default function StartDatePicker(props) {
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justifyContent='space-around'>
         <KeyboardDatePicker
+          // formatDate={(date) => moment(new Date()).format('YYYY-MM-DD')}
+          format='MM-dd-yyyy'
           autoOk={true}
           disableToolbar
           variant='inline'
-          format='MM/dd/yyyy'
           margin='normal'
           id='date-picker-inline'
           label='Start Date'
