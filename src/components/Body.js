@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid'
 
 export default function Body() {
   const apiKey = 'BdgQlWf6ucvJktrCP2SxWEKf1fnAUcT4GXx4tIFs'
-  const [obj, setObj] = useState(null)
+  const [objArr, setObjArr] = useState(null)
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
   const [querySuccess, setQuerySuccess] = useState(false)
@@ -54,7 +54,7 @@ export default function Body() {
           `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=${startDate}&end_date=${endDate}`
         )
         .then((res) => {
-          setObj(res.data)
+          setObjArr(res.data)
           setQuerySuccess(true)
         })
         .catch((err) => console.log('ERROR', err))
@@ -65,14 +65,14 @@ export default function Body() {
   }, [startDate, endDate])
 
   useEffect(() => {
-    console.log('OBJ', obj)
-  }, [obj])
+    console.log('OBJ', objArr)
+  }, [objArr])
 
   useEffect(() => {
-    if (obj !== null && querySuccess === true) {
+    if (objArr !== null && querySuccess === true) {
       setRenderCards(true)
     }
-  }, [obj, querySuccess])
+  }, [objArr, querySuccess])
 
   return (
     <Grid
@@ -88,7 +88,7 @@ export default function Body() {
       </Box>
 
       {renderCards ? (
-        <NasaCards data={obj} />
+        <NasaCards objArr={objArr} />
       ) : (
         <DatePickers
           startDateValue={startDate}
