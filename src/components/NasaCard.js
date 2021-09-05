@@ -79,7 +79,7 @@ export default function NasaCard(props) {
           />
           <CardMedia
             className={classes.media}
-            image={obj.url}
+            image={obj.hdurl ? obj.hdurl : obj.url}
             title={obj.title}
           />
 
