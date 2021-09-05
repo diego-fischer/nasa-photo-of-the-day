@@ -53,75 +53,67 @@ export default function NasaCard(props) {
   }
 
   return (
-    <Grid
-      container
-      spacing={0}
-      direction='column'
-      alignItems='center'
-      justify='center'
-      style={{ minHeight: '100vh' }}
+    <Box
+      mb={2}
+      display='flex'
+      justifyContent='center'
+      alginItems='center'
+      className={classes.root}
     >
-      <Box
-        mb={2}
-        justifyContent='center'
-        alginItems='center'
-        className={classes.root}
-      >
-        <Card raised={true} className={classes.root}>
-          <CardHeader
-            avatar={
-              <Avatar aria-label='recipe' className={classes.avatar}>
-                {avatar}
-              </Avatar>
-            }
-            action={
-              <IconButton aria-label='settings'>
-                <MoreVertIcon />
-              </IconButton>
-            }
-            title={obj.title}
-            subheader={obj.date}
-          />
-          <CardMedia
-            className={classes.media}
-            image={obj.hdurl ? obj.hdurl : obj.url}
-            title={obj.title}
-          />
+      <Card raised={true} className={classes.root}>
+        <CardHeader
+          avatar={
+            <Avatar aria-label='recipe' className={classes.avatar}>
+              {avatar}
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label='settings'>
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title={obj.title}
+          subheader={obj.date}
+        />
+        <CardMedia
+          className={classes.media}
+          image={obj.hdurl ? obj.hdurl : obj.url}
+          title={obj.title}
+        />
 
-          <CardActions disableSpacing>
-            <IconButton aria-label='add to favorites'>
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label='share'>
-              <ShareIcon />
-            </IconButton>
-            <IconButton
-              className={clsx(classes.expand, {
-                [classes.expandOpen]: expanded,
-              })}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label='show more'
-            >
-              <ExpandMoreIcon />
-            </IconButton>
-          </CardActions>
+        <CardActions disableSpacing>
+          <IconButton aria-label='add to favorites'>
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label='share'>
+            <ShareIcon />
+          </IconButton>
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label='show more'
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
 
-          {expanded ? (
-            <Collapse in={expanded} timeout='auto' unmountOnExit>
-              <CardContent>
-                <Typography paragraph>{obj.explanation}</Typography>
-              </CardContent>
-            </Collapse>
-          ) : (
+        {expanded ? (
+          <Collapse in={expanded} timeout='auto' unmountOnExit>
             <CardContent>
-              <Typography variant='body2' color='textSecondary' component='p'>
-                {shortExplanation}...
-              </Typography>
+              <Typography paragraph>{obj.explanation}</Typography>
             </CardContent>
-          )}
-        </Card>
-      </Box>
-    </Grid>
+          </Collapse>
+        ) : (
+          <CardContent>
+            <Typography variant='body2' color='textSecondary' component='p'>
+              {shortExplanation}...
+            </Typography>
+          </CardContent>
+        )}
+      </Card>
+    </Box>
   )
 }

@@ -10,6 +10,7 @@ export default function NasaCards(props) {
     <Grid
       container
       spacing={0}
+      display='flex'
       direction='column'
       alignItems='center'
       justify='center'

@@ -2,7 +2,6 @@ import React from 'react'
 import StartDatePicker from './StartDatePicker'
 import EndDatePicker from './EndDatePicker'
 import { Typography, Box } from '@material-ui/core'
-import Grid from '@material-ui/core/Grid'
 
 export default function DatePickers(props) {
   return (

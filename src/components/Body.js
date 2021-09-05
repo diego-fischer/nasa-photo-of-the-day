@@ -3,9 +3,12 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import NasaCards from './NasaCards'
 import DatePickers from './DatePickers'
-
 import { Typography, Box } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
+import NasaLogo from './NasaLogo'
+import { loadProgressBar } from 'axios-progress-bar'
+
+loadProgressBar()
 
 export default function Body() {
   const apiKey = 'BdgQlWf6ucvJktrCP2SxWEKf1fnAUcT4GXx4tIFs'
@@ -83,12 +86,24 @@ export default function Body() {
       justify='center'
       style={{ minHeight: '100vh' }}
     >
-      <Box mt={10}>
+      <Box
+        mt={2}
+        display='flex'
+        flexDirection='row'
+        alignItems='center'
+        justifyContent='center'
+      >
+        <NasaLogo />
         <Typography variant='h1'>Nasa Observatory</Typography>
       </Box>
 
       {renderCards ? (
-        <NasaCards objArr={objArr} />
+        <NasaCards
+          display='flex'
+          flexDirection='column'
+          alignItems='center'
+          objArr={objArr}
+        />
       ) : (
         <DatePickers
           startDateValue={startDate}
