@@ -61,7 +61,12 @@ export default function NasaCard(props) {
       justify='center'
       style={{ minHeight: '100vh' }}
     >
-      <Box mb={2} className={classes.root}>
+      <Box
+        mb={2}
+        justifyContent='center'
+        alginItems='center'
+        className={classes.root}
+      >
         <Card raised={true} className={classes.root}>
           <CardHeader
             avatar={
