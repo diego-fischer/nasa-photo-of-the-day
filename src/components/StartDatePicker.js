@@ -6,7 +6,6 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers'
-import moment from 'moment'
 
 export default function StartDatePicker(props) {
   // The first commit of Material-UI

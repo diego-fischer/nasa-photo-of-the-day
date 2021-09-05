@@ -12,19 +12,28 @@ export default function Body() {
   const [obj, setObj] = useState(null)
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
-  const currentDate = new Date()
+  const [querySuccess, setQuerySuccess] = useState(false)
+  const [renderCards, setRenderCards] = useState(false)
 
   const handleStartDateChange = (date) => {
-    const newDate = formatDate(date)
-    setStartDate(newDate)
+    const today = new Date()
+    if (date <= today) {
+      const newDate = formatDate(date)
+      setStartDate(newDate)
+    } else {
+      alert(`Date can't be greater than today`)
+    }
   }
 
   const handleEndDateChange = (date) => {
-    const newDate = formatDate(date)
-    setEndDate(newDate)
+    const today = new Date()
+    if (date <= today) {
+      const newDate = formatDate(date)
+      setEndDate(newDate)
+    } else {
+      alert(`Date can't be greater than today`)
+    }
   }
-
-  const [readyToQuery, setReadyToQuery] = useState(false)
 
   function formatDate(date) {
     var d = new Date(date),
@@ -40,30 +49,30 @@ export default function Body() {
 
   useEffect(() => {
     if (startDate !== null && endDate !== null && endDate > startDate) {
-      console.log('execute axios call')
       axios
         .get(
           `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=${startDate}&end_date=${endDate}`
         )
         .then((res) => {
-          console.log(res)
-          setReadyToQuery(true)
+          setObj(res.data)
+          setQuerySuccess(true)
         })
+        .catch((err) => console.log('ERROR', err))
     } else if (startDate > endDate && endDate !== null) {
-      console.log('show error message')
-      setReadyToQuery(false)
-    } else if (startDate > currentDate || endDate > currentDate) {
-      alert(`Selected date is greater than today's date`)
+      alert('Start Date is greater than End Date')
+      setQuerySuccess(false)
     }
-    console.log('START DATE', startDate)
-    console.log('END DATE', endDate)
   }, [startDate, endDate])
 
   useEffect(() => {
-    console.log('START DATE', startDate)
-    console.log('END DATE', endDate)
-    console.log('READY TO QUERY', readyToQuery)
-  }, [startDate, endDate, readyToQuery])
+    console.log('OBJ', obj)
+  }, [obj])
+
+  useEffect(() => {
+    if (obj !== null && querySuccess === true) {
+      setRenderCards(true)
+    }
+  }, [obj, querySuccess])
 
   return (
     <Grid
@@ -78,21 +87,16 @@ export default function Body() {
         <Typography variant='h1'>Nasa Observatory</Typography>
       </Box>
 
-      <Box mt={5}>
-        <Typography align='center' variant='subtitle1'>
-          Nasa discloses one awesome photo per day. Please select below the
-          dates interval for which your gallery will be generated.
-        </Typography>
-      </Box>
-
-      <Box>
+      {renderCards ? (
+        <NasaCards data={obj} />
+      ) : (
         <DatePickers
           startDateValue={startDate}
           startDateOnChange={(date) => handleStartDateChange(date)}
           endeDateValue={endDate}
           endDateOnChange={(date) => handleEndDateChange(date)}
         />
-      </Box>
+      )}
     </Grid>
   )
 }

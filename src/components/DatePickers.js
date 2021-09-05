@@ -1,19 +1,27 @@
 import React from 'react'
 import StartDatePicker from './StartDatePicker'
 import EndDatePicker from './EndDatePicker'
-import { Box } from '@material-ui/core'
+import { Typography, Box } from '@material-ui/core'
 
 export default function DatePickers(props) {
   return (
-    <Box>
-      <StartDatePicker
-        value={props.startDateValue}
-        onChange={(date) => props.startDateOnChange(date)}
-      />
-      <EndDatePicker
-        value={props.endeDateValue}
-        onChange={(date) => props.endDateOnChange(date)}
-      />
-    </Box>
+    <React.Fragment>
+      <Box mt={5}>
+        <Typography align='center' variant='subtitle1'>
+          Nasa discloses one awesome photo per day. Please select below the
+          dates interval for which your gallery will be generated.
+        </Typography>
+      </Box>
+      <Box>
+        <StartDatePicker
+          value={props.startDateValue}
+          onChange={(date) => props.startDateOnChange(date)}
+        />
+        <EndDatePicker
+          value={props.endeDateValue}
+          onChange={(date) => props.endDateOnChange(date)}
+        />
+      </Box>
+    </React.Fragment>
   )
 }

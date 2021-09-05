@@ -1,12 +1,19 @@
-import {
-  Card,
-  Grid,
-  Container,
-  CardContent,
-  Typography,
-} from '@material-ui/core'
+import { Card } from '@material-ui/core'
 import React from 'react'
 
 export default function NasaCards(props) {
-  return <h1>Teste</h1>
+  return (
+    <React.Fragment>
+      <Card>
+        {props.data.map((el) => {
+          return (
+            <Card>
+              Date: {el['date']}
+              Explanation: {el['explanation']}
+            </Card>
+          )
+        })}
+      </Card>
+    </React.Fragment>
+  )
 }
