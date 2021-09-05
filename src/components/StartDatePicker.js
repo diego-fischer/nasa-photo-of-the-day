@@ -14,7 +14,6 @@ export default function StartDatePicker(props) {
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justifyContent='space-around'>
         <KeyboardDatePicker
-          // formatDate={(date) => moment(new Date()).format('YYYY-MM-DD')}
           format='MM-dd-yyyy'
           autoOk={true}
           disableToolbar

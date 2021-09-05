@@ -7,7 +7,7 @@ export default function DatePickers(props) {
   return (
     <React.Fragment>
       <Box mt={5} mb={5}>
-        <Typography align='center' variant='subtitle1'>
+        <Typography align='center' variant='subtitle1' color='primary'>
           Nasa discloses one awesome photo per day. <br /> Please select below
           the dates interval for which your gallery will be generated.
         </Typography>

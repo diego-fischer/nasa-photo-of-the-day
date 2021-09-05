@@ -94,7 +94,9 @@ export default function Body() {
         justifyContent='center'
       >
         <NasaLogo />
-        <Typography variant='h1'>Nasa Observatory</Typography>
+        <Typography variant='h1' color='primary'>
+          Nasa Observatory
+        </Typography>
       </Box>
 
       {renderCards ? (

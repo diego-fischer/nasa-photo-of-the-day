@@ -2,7 +2,6 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import Card from '@material-ui/core/Card'
-import Grid from '@material-ui/core/Grid'
 import CardHeader from '@material-ui/core/CardHeader'
 import Box from '@material-ui/core/Box'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -17,6 +16,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import ShareIcon from '@material-ui/icons/Share'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
+import styled from 'styled-components'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,6 +41,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+const StyledCard = styled(Card)`
+  background-color: #2d5ea7;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 7px 14px;
+  width: 75%;
+  height: 25%;
+  &:hover {
+    background-color: #5469d4;
+  }
+`
+
 export default function NasaCard(props) {
   const { obj } = props
   const avatar = obj.title.split(' ').pop().charAt(0)
@@ -60,7 +72,7 @@ export default function NasaCard(props) {
       alginItems='center'
       className={classes.root}
     >
-      <Card raised={true} className={classes.root}>
+      <StyledCard id='main-card'>
         <CardHeader
           avatar={
             <Avatar aria-label='recipe' className={classes.avatar}>
@@ -113,7 +125,7 @@ export default function NasaCard(props) {
             </Typography>
           </CardContent>
         )}
-      </Card>
+      </StyledCard>
     </Box>
   )
 }
