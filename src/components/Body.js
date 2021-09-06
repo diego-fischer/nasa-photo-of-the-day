@@ -87,6 +87,7 @@ export default function Body() {
       style={{ minHeight: '100vh' }}
     >
       <Box
+        id='logo-and-h1'
         mt={2}
         display='flex'
         flexDirection='row'
@@ -94,9 +95,7 @@ export default function Body() {
         justifyContent='center'
       >
         <NasaLogo />
-        <Typography variant='h1' color='primary'>
-          Nasa Observatory
-        </Typography>
+        <Typography variant='h1'>Nasa Observatory</Typography>
       </Box>
 
       {renderCards ? (

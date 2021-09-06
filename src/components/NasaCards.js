@@ -17,7 +17,7 @@ export default function NasaCards(props) {
       style={{ minHeight: '100vh' }}
     >
       {objArr.map((el) => {
-        return <NasaCard obj={el}>Date example: {el.date}</NasaCard>
+        return <NasaCard obj={el} />
       })}
     </Grid>
   )
