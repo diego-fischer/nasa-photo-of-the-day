@@ -16,6 +16,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import ShareIcon from '@material-ui/icons/Share'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
+import { sizing } from '@material-ui/system'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,12 +56,15 @@ export default function NasaCard(props) {
     <Box
       mb={2}
       display='flex'
+      style={{ width: '100%' }}
       justifyContent='center'
       alginItems='center'
       className={classes.root}
+      id='singleCardBox'
     >
-      <Card id='main-card'>
+      <Card style={{ width: '65%' }} id='singleCard'>
         <CardHeader
+          id='singleCardHeader'
           avatar={
             <Avatar aria-label='recipe' className={classes.avatar}>
               {avatar}
@@ -75,6 +79,7 @@ export default function NasaCard(props) {
           subheader={obj.date}
         />
         <CardMedia
+          id='singleCardMedia'
           className={classes.media}
           image={obj.hdurl ? obj.hdurl : obj.url}
           title={obj.title}
