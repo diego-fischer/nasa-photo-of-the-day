@@ -1,3 +1,5 @@
+dark theme nasa
+
 # Module Project: Component Side Effects- NASA APOD
 
 This will be a two-module project. In it you will consume the NASA API to fetch the "Astronomy Photo Of The Day" or APOD. Once you fetch the data, you will build a few components that will render different pieces of data in your interface. After the second module (in the [DAY_TWO_README.md](DAY_TWO_README.md) file) you will re-style your app using [Styled Components](https://github.com/LambdaSchool/nasa-photo-of-the-day.git).
@@ -39,10 +41,10 @@ This project was put together using create-react-app (CRA). You will not need to
 
 **Planning**
 
-- [ ] If you want, this is the time to make a simple design spec (look up ["simple wireframes"](https://www.google.com/search?q=simple+wireframes) to find resources & examples). **A pen & paper sketch (or outline) is often the fastest way to start your planning.**
-- [ ] Once you have a design plan in mind, break down the designs into individual components.
-- [ ] Plan which components will hold state, what data each needs from props (if any), and where you will be making your data fetch.
-- [ ] Now it's time to jump into the code!
+- [x] If you want, this is the time to make a simple design spec (look up ["simple wireframes"](https://www.google.com/search?q=simple+wireframes) to find resources & examples). **A pen & paper sketch (or outline) is often the fastest way to start your planning.**
+- [x] Once you have a design plan in mind, break down the designs into individual components.
+- [x] Plan which components will hold state, what data each needs from props (if any), and where you will be making your data fetch.
+- [x] Now it's time to jump into the code!
 
 **File structure**
 
@@ -85,12 +87,12 @@ Now is the time to build out your other components. Compose your UI, and then pa
 
 ```js
 // Display a loading message while the data is fetching
-if (!props.photoOfTheDay) return <h3>Loading...</h3>;
+if (!props.photoOfTheDay) return <h3>Loading...</h3>
 
 // Display your component as normal after the data has been fetched
-return (
-  {/* your normal JSX here */}
-);
+return {
+  /* your normal JSX here */
+}
 ```
 
 - Read through the API docs carefully. You will read through many technical docs as a developer, so start now to try and understand them.
@@ -108,6 +110,6 @@ Follow these steps for completing your project.
 
 - [ ] Submit a Pull-Request to merge Branch into `main` (student's Repository).
 
-----
+---
 
 ## Part II - [Advanced Styling Techniques](DAY_TWO_README.md)
